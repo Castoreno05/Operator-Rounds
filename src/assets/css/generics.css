@@ -1,0 +1,368 @@
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+a,
+ul,
+li,
+label,
+form,
+table,
+nav,
+input,
+textarea,
+select {
+    font-family: 'Avenir';
+    font-size: 16px;
+    color: #344054;
+}
+
+input {
+    width: 100%;
+    border: none;
+}
+
+select {
+    border: 1px solid #9b9b9b;
+    width: 100%;
+    border-radius: 4px;
+    padding: 8px 10px;
+    height: 56px;
+}
+
+textarea {
+    border: 1px solid #9b9b9b;
+    border-radius: 4px;
+    padding: 8px 10px;
+}
+
+select option:hover {
+    background: #ecf1fc;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border: none;
+}
+
+input::placeholder,
+select::placeholder,
+textarea::placeholder {
+    color: #afb4bc;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+    filter: opacity(0.4);
+}
+
+input[type='time']::-webkit-calendar-picker-indicator {
+    filter: opacity(0.4);
+}
+
+input[type='date']::-webkit-calendar-picker-indicator:hover,
+input[type='time']::-webkit-calendar-picker-indicator:hover {
+    filter: opacity(0.5);
+    cursor: pointer;
+}
+
+/*****Start Input Wrapper*****/
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/*select*/
+.inputWrapper span.chevron {
+    position: absolute;
+    top: 21px;
+    right: 10px;
+    display: block;
+    transform: rotate(0deg);
+    transition: all 0.3s;
+    color: #959595;
+}
+
+.inputWrapper select:focus ~ span.chevron {
+    transform: rotate(180deg);
+}
+
+.inputWrapper span.chevron i {
+    font-size: 14px;
+}
+
+.inputWrapper select {
+    padding-right: 30px;
+}
+
+select {
+    appearance: none;
+}
+
+/*text error*/
+.inputWrapper p {
+    font-size: 13px;
+    font-weight: 500;
+    position: absolute;
+    top: 107%;
+    left: 6px;
+    color: #cb5555;
+    display: none;
+}
+
+.inputWrapper .errorMessage p {
+    display: block;
+}
+
+.inputWrapper.errorMessage input,
+.inputWrapper.errorMessage select,
+.inputWrapper.errorMessage textarea {
+    border: 1px solid #cb5555;
+}
+
+.inputWrapper.errorMessage textarea ~ p {
+    top: 102%;
+}
+
+.form .inputWrapper.errorMessage .greyLabel {
+    color: #cb5555;
+}
+
+.inputWrapper input:focus ~ .greyLabel,
+.inputWrapper select:focus ~ .greyLabel,
+.inputWrapper textarea:focus ~ .greyLabel {
+    color: #012bd9;
+}
+
+.inputWrapper input:focus ~ label,
+.inputWrapper select:focus ~ label,
+.inputWrapper textarea:focus ~ label {
+    color: #012bd9;
+}
+
+.greyLabel {
+    position: absolute;
+    top: -13px;
+    left: 10px;
+    color: #9b9b9b;
+    font-size: 12px;
+    background: #fff;
+    padding: 6px;
+}
+
+/*****End Input Wrapper*****/
+
+/*****Date Picker*****/
+
+.react-datepicker-popper {
+    right: 0 !important;
+    top: 105% !important;
+    transform: translate(0, 0) !important;
+    z-index: 9999 !important;
+    justify-content: end;
+    display: flex;
+}
+
+.react-datepicker {
+    background: #ffffff;
+    box-shadow: 0px 0px 20px 4px rgba(191, 191, 191, 0.5);
+    border-radius: 14px !important;
+    border: none !important;
+    padding: 0 30px;
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+    height: 100%;
+    z-index: 9999;
+}
+
+.react-datepicker__input-container input {
+    height: 100%;
+    background: transparent;
+    cursor: default;
+}
+
+.react-datepicker__navigation {
+    top: 23px !important;
+    padding: 0 35px !important;
+}
+
+.react-datepicker__navigation span::before {
+    border-color: #012bd9;
+}
+
+.react-datepicker__triangle {
+    display: none;
+}
+
+.react-datepicker__header {
+    background-color: #ffff !important;
+    border-bottom: none !important;
+    padding: 0 0 15px 0 !important;
+    border-radius: 16px 16px 0 0 !important;
+}
+
+.react-datepicker__week {
+    margin-bottom: 10px;
+}
+
+.react-datepicker__header .react-datepicker__day-name {
+    color: #9b9b9b;
+}
+
+.react-datepicker__header .react-datepicker__current-month {
+    padding: 30px 0;
+    font-weight: 400;
+}
+
+.react-datepicker__day--selected {
+    background-color: #012bd9 !important;
+    border-radius: 18px !important;
+    color: #ffff !important;
+}
+
+.react-datepicker__day:hover {
+    background-color: #f0f0f0 !important;
+    border-radius: 18px !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+    background: none !important;
+}
+
+.rdw-editor-wrapper {
+    width: 100%;
+}
+
+.rdw-editor-toolbar {
+    padding: 10px 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid #9b9b9b !important;
+}
+
+.rdw-dropdown-wrapper {
+    border: none !important;
+    border-radius: 4px !important;
+}
+
+.rdw-dropdown-wrapper:hover {
+    background: #ecede8 !important;
+    box-shadow: none !important;
+}
+
+.rdw-option-wrapper {
+    border: none !important;
+    border-radius: 4px !important;
+}
+
+.rdw-option-wrapper:hover {
+    box-shadow: none !important;
+    background: #ecede8;
+}
+
+.rdw-option-active {
+    box-shadow: none !important;
+    background: #ecede8 !important;
+}
+
+/*****End Date Picker*****/
+
+.public-DraftEditor-content div,
+.public-DraftEditor-content span,
+.public-DraftEditor-content h1,
+.public-DraftEditor-content h2,
+.public-DraftEditor-content h3,
+.public-DraftEditor-content h4,
+.public-DraftEditor-content h5,
+.public-DraftEditor-content h6,
+.public-DraftEditor-content p,
+.public-DraftEditor-content pre,
+.public-DraftEditor-content a,
+.public-DraftEditor-content ul,
+.public-DraftEditor-content li,
+.public-DraftEditor-content label,
+.public-DraftEditor-content form,
+.public-DraftEditor-content table,
+.public-DraftEditor-content nav,
+.public-DraftEditor-content input,
+.public-DraftEditor-content textarea,
+.public-DraftEditor-content select {
+    font-family: inherit;
+    color: inherit;
+}
+
+.public-DraftEditor-content h1 {
+    font-size: 32px;
+}
+
+.public-DraftEditor-content h2 {
+    font-size: 28px;
+}
+.public-DraftEditor-content h3 {
+    font-size: 24px;
+}
+.public-DraftEditor-content h4 {
+    font-size: 20px;
+}
+.public-DraftEditor-content h5 {
+    font-size: 16px;
+}
+.public-DraftEditor-content h6 {
+    font-size: 12px;
+}
+
+.public-DraftEditor-content h1 *,
+.public-DraftEditor-content h2 *,
+.public-DraftEditor-content h3 *,
+.public-DraftEditor-content h4 *,
+.public-DraftEditor-content h5 *,
+.public-DraftEditor-content h6 * {
+    font-size: inherit !important;
+}
+
+/***** End Date Picker*****/
+
+/***** Table *****/
+
+table thead th div {
+    color: #6f7785;
+    white-space: nowrap;
+    padding: 16px 20px;
+    text-align: start;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 22px;
+    cursor: default;
+}
+
+table tbody td {
+    padding: 16px 20px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+table tbody tr:nth-child(odd) {
+    background: #ffff;
+}
+
+table tbody tr:nth-child(even) {
+    background: #f7f7f8;
+}
+
+table tbody tr:hover {
+    background: #ecf1fc;
+}
+
+/***** End Table *****/

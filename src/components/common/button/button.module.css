@@ -1,0 +1,105 @@
+.button {
+    border-radius: 30px;
+    border: none;
+    padding: 10px 17px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    white-space: nowrap;
+    gap: 10px;
+}
+
+.gray-bg {
+    background: #e6eafb;
+    color: #2549de;
+}
+
+.gray-bg p {
+    color: #2549de;
+}
+
+.blue-bg {
+    background: #012bd9;
+    color: #fff;
+}
+
+.blue-bg p {
+    color: #fff;
+}
+
+.transparent-bg {
+    background: transparent;
+    padding: 0;
+    color: #012bd9;
+    font-weight: 600;
+}
+
+.transparent-bg p {
+    color: #012bd9;
+}
+
+.button i {
+    font-size: 18px;
+}
+
+.button i::before {
+    margin-left: 0;
+}
+
+.button:hover,
+.blue-bg:hover {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #012bd9;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.gray-bg:hover {
+    background: #e6eafb;
+    color: #0122ae;
+}
+
+.gray-bg:hover p {
+    color: #0122ae;
+}
+
+.transparent-bg:hover {
+    background: transparent;
+    box-shadow: none;
+    color: #0122ae;
+}
+
+.transparent-bg:hover p {
+    color: #0122ae;
+}
+
+.button.disabled i,
+.button.disabled p,
+.button.disabled:hover {
+    color: #9b9b9b;
+    cursor: default;
+}
+
+.button .loader {
+    animation: spin 1.5s linear infinite;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #4766d5;
+    border-radius: 50%;
+    border-left: 0;
+    border-top: 0;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+table .transparent-bg {
+    color: gray;
+}

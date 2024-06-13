@@ -1,0 +1,159 @@
+@font-face {
+    font-family: 'Avenir';
+    src: url('../fonts/avenir-lt-std-light.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../fonts/avenir-lt-std-light-oblique.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../fonts/avenir-lt-std-book.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../fonts/avenir-lt-std-book-oblique.otf') format('opentype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../fonts/avenir-lt-std-roman.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../fonts/avenir-lt-std-medium.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../fonts/avenir-lt-std-medium-oblique.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../fonts/avenir-lt-std-heavy.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../fonts/avenir-lt-std-heavy-oblique.otf') format('opentype');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../fonts/avenir-lt-std-black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../fonts/avenir-lt-std-black-oblique.otf') format('opentype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'syzygy';
+    src: url('../fonts/syzygy.eot?47951865');
+    src: url('../fonts/syzygy.eot?47951865#iefix') format('embedded-opentype'),
+         url('../fonts/syzygy.woff2?47951865') format('woff2'),
+         url('../fonts/syzygy.woff?47951865') format('woff'),
+         url('../fonts/syzygy.ttf?47951865') format('truetype'),
+         url('../fonts/syzygy.svg?47951865#syzygy') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+font-family: "syzygy";
+font-style: normal;
+font-weight: normal;
+speak: never;
+
+display: inline-block;
+text-decoration: inherit;
+width: 1em;
+margin-right: .2em;
+text-align: center;
+
+/* For safety - reset parent styles, that can break glyph codes*/
+font-variant: normal;
+text-transform: none;
+
+/* fix buttons height, for twitter bootstrap */
+line-height: 1em;
+
+/* Animation center compensation - margins should be symmetric */
+margin-left: .2em;
+
+/* Font smoothing. That was taken from TWBS */
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+
+}
+  
+.icon-check:before { content: '\e800'; }
+.icon-arrow-right:before { content: '\e801'; }
+.icon-link:before { content: '\e802'; }
+.icon-paperclip:before { content: '\e803'; }
+.icon-file-text:before { content: '\e804'; }
+.icon-chevron-down:before { content: '\e805'; }
+.icon-arrow-down:before { content: '\e806'; }
+.icon-arrow-up-right:before { content: '\e807'; }
+.icon-search:before { content: '\e808'; }
+.icon-list:before { content: '\e809'; }
+.icon-menu:before { content: '\e80a'; }
+.icon-minus-circle:before { content: '\e80b'; }
+.icon-clock:before { content: '\e80c'; }
+.icon-calendar:before { content: '\e80d'; }
+.icon-settings:before { content: '\e80e'; }
+.icon-chevron-up:before { content: '\e80f'; }
+.icon-vertical-six-dots:before { content: '\e810'; }
+.icon-arrow-up:before { content: '\e811'; }
+.icon-plus:before { content: '\e812'; }
+.icon-x:before { content: '\e814'; }
+.icon-alert:before { content: '\e815'; }
+.icon-rotate-ccw:before { content: '\e816'; }
+.icon-alert-triangle:before { content: '\e817'; }
+.icon-success:before { content: '\e818'; }
+.icon-chevron-right:before { content: '\e819'; }
+.icon-chevron-left:before { content: '\e81a'; }
+.icon-user:before { content: '\e81b'; }
+.icon-x-circle:before { content: '\e81c'; }
+.icon-sort-amount-down:before { content: '\e81d'; }
+.icon-edit:before { content: '\e81e'; }
+.icon-upload-cloud:before { content: '\e81f'; }
+.icon-trash:before { content: '\e820'; }
+.icon-plus-circle:before { content: '\e821'; }
+.icon-arrow-left:before { content: '\e822'; }
+.icon-download:before { content: '\e823'; }
+.icon-info:before { content: '\e824'; }
+.icon-check-circle:before { content: '\e825'; }
+.icon-more-vertical:before { content: '\e826'; }
+.icon-more-horizontal:before { content: '\e827'; }
+.icon-filter:before { content: '\e828'; }
+.icon-not-found:before { content: '\e829'; }
+.icon-log-out:before { content: '\e82a'; }

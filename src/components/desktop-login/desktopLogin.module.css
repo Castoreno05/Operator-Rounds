@@ -1,0 +1,74 @@
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #012bd9 0%, #1cb6e0 100%);
+}
+
+.wrapper .content {
+    max-width: 600px;
+    margin: auto;
+    margin-top: calc(50vh - 60px);
+    transform: translate(0, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.wrapper .content .logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.wrapper .content .logo figure {
+    width: 160px;
+    display: flex;
+    align-items: center;
+}
+
+.wrapper .content .logo figure img {
+    width: 100%;
+}
+
+.wrapper .content .logo .divider {
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: #fff;
+    margin: 0 40px;
+}
+
+.wrapper .content .logo h3 {
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.wrapper .content .card {
+    box-shadow: 0px 0px 20px 4px rgba(191, 191, 191, 0.5);
+    padding: 50px 80px;
+    border-radius: 8px;
+    background: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.wrapper .content .card .title {
+    text-align: center;
+    font-size: 38px;
+    font-weight: 800;
+}
+
+.wrapper .content .card p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    max-width: 300px;
+    text-align: center;
+}
