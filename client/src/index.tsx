@@ -5,6 +5,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { MsalProvider } from "@azure/msal-react";
 import { AuthProvider } from "./hooks/context/useAuth";
+import { RoundEntryProvider } from "./hooks/context/useRoundEntry";
 
 import {
 	EventType,
@@ -38,7 +39,9 @@ root.render(
 		<BrowserRouter>
 			<MsalProvider instance={msalInstance}>
 				<AuthProvider>
-					<App />
+					<RoundEntryProvider>
+						<App />
+					</RoundEntryProvider>
 				</AuthProvider>
 			</MsalProvider>
 		</BrowserRouter>

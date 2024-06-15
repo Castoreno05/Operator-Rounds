@@ -1,5 +1,5 @@
 const API_PATHS = {
-	Rounds: "/rounds",
+	Rounds: "/rounds/getRounds",
 };
 
 export default API_PATHS;

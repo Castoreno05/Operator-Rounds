@@ -20,7 +20,7 @@ const LoginPage = () => {
 		const activeAccount = instance.getActiveAccount();
 		if (activeAccount) {
 			setAuthenticatedAccount(activeAccount);
-			navigate(state || "/check-in");
+			navigate(state || "/round-entries");
 		}
 	}, [navigate, instance, setAuthenticatedAccount, state]);
 

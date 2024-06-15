@@ -1,0 +1,118 @@
+.header {
+    background: linear-gradient(90deg, #012bd9 0%, #1cb6e0 100%);
+    width: 100%;
+    height: 80px;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header figure {
+    width: 160px;
+    display: flex;
+    align-items: center;
+}
+
+.header figure img {
+    width: 100%;
+}
+
+.header figure img:hover{
+    cursor: pointer
+}
+
+.header .divider {
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: #fff;
+    margin: 0 40px;
+}
+
+.header h3 {
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.header .rightSide {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.header .rightSide .username {
+    color: #fff;
+}
+
+.header .rightSide .logOut {
+    cursor: pointer;
+}
+
+.header .rightSide .logOut i {
+    color: #ffff;
+    font-size: 18px;
+}
+
+.header .rightSide .logOut span {
+    color: #ffff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.header .rightSide .divider {
+    display: block;
+    width: 1px;
+    height: 25px;
+    background: #fff;
+    margin: 0 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        height: 64px;
+        padding: 20px;
+        justify-content: space-between;
+    }
+
+    .header.withLogOut {
+        padding: 20px 60px 20px 20px;
+    }
+
+    .header figure {
+        width: 130px;
+        margin-right: 20px;
+    }
+
+    .header .divider {
+        display: none;
+    }
+
+    .header h3 {
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .header .rightSide {
+        top: 20px;
+        right: 15px;
+    }
+
+    .header .rightSide .divider {
+        margin: 0 10px;
+    }
+
+    .header .rightSide .logOut i {
+        color: #ffff;
+        font-size: 16px;
+    }
+
+    .header .rightSide span {
+        color: #ffff;
+        font-size: 14px;
+    }
+}

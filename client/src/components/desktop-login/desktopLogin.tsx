@@ -14,7 +14,7 @@ export const DesktopLogin: FC<DesktopLoginProps> = props => {
             <div className={styles.content}>
                 <div className={styles.logo}>
                     <figure>
-                        <img src={syzygyLogo} alt="logo-syzygy" />
+                        {/* <img src={syzygyLogo} alt="logo-syzygy" /> */}
                     </figure>
                     <span className={styles.divider}></span>
                     <h3>Operational Rounds</h3>

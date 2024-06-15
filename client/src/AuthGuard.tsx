@@ -2,7 +2,7 @@ import { FC, ReactNode, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "./hooks/context/useAuth";
 import { useMsal } from "@azure/msal-react";
-// import Header from "./components/common/header/header";
+import Header from "./components/common/header/header";
 // import { Toast } from './components/common/toast/toast'
 
 const AuthGuard: FC<{
@@ -36,7 +36,7 @@ const AuthGuard: FC<{
 
 	return (
 		<>
-			{/* {!props.hideHeader && <Header />} */}
+			{!props.hideHeader && <Header />}
 			{props.children || <Outlet />}
 		</>
 	);
