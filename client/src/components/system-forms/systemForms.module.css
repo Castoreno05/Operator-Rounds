@@ -1,0 +1,21 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+.form_inputs {
+	display: flex;
+	flex-direction: column;
+}
+
+.responses {
+	display: flex;
+}
+
+.button_container {
+	display: flex;
+}
+
+.button_container .next_btn {
+	margin-left: auto;
+}

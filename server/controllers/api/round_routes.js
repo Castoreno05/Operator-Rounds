@@ -23,7 +23,7 @@ router.post("/insertRound", (req, res) => {
 			shift_date,
 			last_time_submitted,
 			last_round_performed_by,
-			rounds_completed,
+			JSON.stringify([rounds_completed])
 		],
 		(err, result) => {
 			if (err) {

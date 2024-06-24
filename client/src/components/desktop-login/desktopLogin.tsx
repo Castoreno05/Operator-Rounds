@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Button from '../common/button/button'
 import styles from './desktopLogin.module.css'
-import syzygyLogo from '../../assets/img/syzygyLogo.svg'
+// import syzygyLogo from '../../assets/img/syzygyLogo.svg'
 
 type DesktopLoginProps = {
     isLoading: boolean

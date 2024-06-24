@@ -1,15 +1,15 @@
 import React, { FC } from 'react'
 import styles from './header.module.css'
-import syzygyLogo from '../../../assets/img/syzygyLogo.svg'
+// import syzygyLogo from '../../../assets/img/syzygyLogo.svg'
 import { useWindowSize } from '../../../hooks/useWindowSize'
 import classNames from 'classnames'
 import useAuth from '../../../hooks/context/useAuth'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 export const Header: FC = () => {
     const { authenticatedAccount, signOut } = useAuth()
     const { isMobileView } = useWindowSize()
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     return (
         <div className={classNames(styles.header, authenticatedAccount ? styles.withLogOut : '')}>
             <figure>

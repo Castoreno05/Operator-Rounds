@@ -35,15 +35,15 @@ msalInstance.addEventCallback((event: EventMessage) => {
 });
 
 root.render(
-	<React.StrictMode>
-		<BrowserRouter>
-			<MsalProvider instance={msalInstance}>
-				<AuthProvider>
-					<RoundEntryProvider>
-						<App />
-					</RoundEntryProvider>
-				</AuthProvider>
-			</MsalProvider>
-		</BrowserRouter>
-	</React.StrictMode>
+	// <React.StrictMode>
+	<BrowserRouter>
+		<MsalProvider instance={msalInstance}>
+			<AuthProvider>
+				<RoundEntryProvider>
+					<App />
+				</RoundEntryProvider>
+			</AuthProvider>
+		</MsalProvider>
+	</BrowserRouter>
+	// </React.StrictMode>
 );
