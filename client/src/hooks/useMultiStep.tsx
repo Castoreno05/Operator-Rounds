@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { CATALYST_SYSTEMS, TEST_BAY_SYSTEMS } from "../utils/constants";
-import SystemForms from "../components/system-forms/systemForms";
 import useAuth from "./context/useAuth";
-import axios from "axios";
+import { CATALYST_SYSTEMS, TEST_BAY_SYSTEMS } from "../utils/constants";
+import SystemHeader from "../components/system-header/systemHeader";
+import SystemForms from "../components/system-forms/systemForms";
+import useRoundEntry from "./context/useRoundEntry";
 
 const SYSTEMS = {
 	Catalyst: CATALYST_SYSTEMS,
@@ -10,19 +11,23 @@ const SYSTEMS = {
 };
 type SystemKey = keyof typeof SYSTEMS;
 
-export default function useMultiStep() {
+export default function useMultiStep(mutation?: any) {
 	const { authenticatedAccount } = useAuth();
+	const { refetch } = useRoundEntry();
 	const { rig } = JSON.parse(sessionStorage.getItem("Unit_Rounds") || "{}");
 	const [currentStepIndex, setCurrentStepIndex] = useState(0);
 	const [currentSystem] = useState<SystemKey>(rig);
 	const [formData, setFormData] = useState<any>({});
 	const [isNextEnabled, setIsNextEnabled] = useState(false);
 
+	const system = SYSTEMS[currentSystem];
 	const isLastStep =
 		currentStepIndex === SYSTEMS[currentSystem].form_header.length - 1;
+	const stepKey = system.form_header[currentStepIndex];
 
 	useEffect(() => {
 		validateForm();
+		// eslint-disable-next-line
 	}, [formData, currentStepIndex]);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,27 +60,18 @@ export default function useMultiStep() {
 
 		setIsNextEnabled(allFilled);
 	};
-	const handleSubmit = async () => {
-		try {
-			const response = await axios.post(
-				"http://localhost:3001/api/rounds/insertRound",
-				{
-					rig_name: rig,
-					operator: authenticatedAccount?.name,
-					shift_date: new Date(),
-					last_time_submitted: new Date(),
-					last_round_performed_by: authenticatedAccount?.name,
-					rounds_completed: formData,
-				}
-			);
-			console.log(
-				"Data inserted successfully: " + JSON.stringify(response.data)
-			);
-		} catch (error) {
-			console.error("Error inserting data:", error);
-		}
-	};
 
+	function handleSubmit() {
+		mutation({
+			rig_name: rig,
+			operator: authenticatedAccount?.name,
+			shift_date: new Date(),
+			last_time_submitted: new Date(),
+			last_round_performed_by: authenticatedAccount?.name,
+			rounds_completed: formData,
+		});
+		refetch();
+	}
 	function next() {
 		setCurrentStepIndex((i) => {
 			if (i >= SYSTEMS[currentSystem].form_header.length - 1) return i;
@@ -89,9 +85,16 @@ export default function useMultiStep() {
 		});
 	}
 
+	const renderHeader = () => {
+		return (
+			<SystemHeader
+				systems={system.form_header}
+				activeSystem={currentStepIndex}
+			/>
+		);
+	};
+
 	const renderStep = () => {
-		const system = SYSTEMS[currentSystem];
-		const stepKey = system.form_header[currentStepIndex];
 		return (
 			<SystemForms
 				isLastStep={isLastStep}
@@ -108,6 +111,7 @@ export default function useMultiStep() {
 
 	return {
 		rig,
+		renderHeader,
 		renderStep,
 	};
 }

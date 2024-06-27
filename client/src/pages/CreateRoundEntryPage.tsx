@@ -1,9 +1,24 @@
+import { useNavigate } from "react-router-dom";
 import { Layout } from "../components/common/layout/layout";
 import useMultiStep from "../hooks/useMultiStep";
+import { useRoundEntryCreate } from "../services/roundEntry";
 
 const CreateRoundEntryPage = () => {
-	const { rig, renderStep } = useMultiStep();
-	return <Layout pageTitle={`${rig} Unit Round`}>{renderStep()}</Layout>;
+	const navigate = useNavigate();
+	const { mutation } = useRoundEntryCreate({
+		onSuccess: () => {
+			navigate("/round-entries");
+		},
+		onError: () => navigate("/round-entries"),
+	});
+	const { rig, renderHeader, renderStep } = useMultiStep(mutation);
+
+	return (
+		<Layout pageTitle={`${rig} Unit Round`}>
+			{renderHeader()}
+			{renderStep()}
+		</Layout>
+	);
 };
 
 export default CreateRoundEntryPage;

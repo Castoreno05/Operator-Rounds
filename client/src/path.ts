@@ -1,5 +1,6 @@
 const API_PATHS = {
-	Rounds: "/rounds/getRounds",
+	GET_ROUNDS: "/rounds/getRounds",
+	POST_ROUNDS: "/rounds/insertRound",
 };
 
 export default API_PATHS;

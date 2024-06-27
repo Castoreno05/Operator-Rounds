@@ -1,0 +1,17 @@
+.headerContainer {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.activeSystem {
+	padding: 1rem;
+	background-color: lightblue;
+    border-radius: 3px;
+}
+.system {
+	background-color: lightgray;
+	border-radius: 3px;
+	color: grey;
+	padding: 1rem;
+}
