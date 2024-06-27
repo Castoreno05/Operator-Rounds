@@ -7,14 +7,17 @@ import { useWindowSize } from "../../../hooks/useWindowSize";
 type LayoutProps = {
 	pageTitle?: string;
 	navigationBackUrl?: string;
+	systemHeaderIndex?: number;
 	isLoading?: boolean;
 	rightAction?: ReactNode;
 	children: ReactNode;
+	systemHeader?: ReactNode;
 };
 
 export const Layout: FC<LayoutProps> = (props) => {
 	const navigate = useNavigate();
 	const { isMobileView } = useWindowSize();
+	console.log(props.systemHeaderIndex);
 
 	const shouldRenderHeader =
 		props.pageTitle || props.navigationBackUrl || props.rightAction;
@@ -29,7 +32,7 @@ export const Layout: FC<LayoutProps> = (props) => {
 					{shouldRenderHeader && (
 						<header>
 							<div className={styles.leftSide}>
-								{props.navigationBackUrl && (
+								{props.systemHeaderIndex === 0 && props.navigationBackUrl && (
 									<i
 										className="icon-arrow-left"
 										onClick={() => navigate(props.navigationBackUrl!)}
@@ -38,6 +41,7 @@ export const Layout: FC<LayoutProps> = (props) => {
 								{props.pageTitle && <h1>{props.pageTitle}</h1>}
 							</div>
 							{props.rightAction}
+							{props.systemHeader}
 						</header>
 					)}
 

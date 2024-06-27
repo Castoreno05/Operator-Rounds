@@ -38,16 +38,23 @@ export const UnitOptionsModal: FC<UnitOptionsModalProps> = (props) => {
 				ref={containerRef}
 			>
 				<h1>Select a Unit</h1>
-				{MODAL_OPTION_STATE.map((option, index) => (
-					<Input
-						key={index}
-						label={option.label}
-						type={option.type}
-						name="unitOptions"
-						onChange={() => handleOptionChange(option.label)}
-					/>
-				))}
-				<button disabled={!selectedOption} onClick={() => navigateAndClose("/create-entry")}>
+				<div className={styles.inputContainer}>
+					{MODAL_OPTION_STATE.map((option, index) => (
+						<Input
+							selectedUnit={selectedOption}
+							key={index}
+							label={option.label}
+							type={option.type}
+							name="unitOptions"
+							onChange={() => handleOptionChange(option.label)}
+						/>
+					))}
+				</div>
+				<button
+					disabled={!selectedOption}
+					onClick={() => navigateAndClose("/create-entry")}
+					className={styles.submit}
+				>
 					Submit
 				</button>
 			</div>

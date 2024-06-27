@@ -110,6 +110,7 @@ export default function useMultiStep(mutation?: any) {
 	};
 
 	return {
+		currentStepIndex,
 		rig,
 		renderHeader,
 		renderStep,

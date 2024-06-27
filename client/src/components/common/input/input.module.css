@@ -1,0 +1,27 @@
+.label {
+	cursor: pointer;
+	padding: 1rem;
+	text-align: center;
+	border: solid 1px black;
+	font-weight: 600;
+	font-size: 20px;
+}
+
+.label:hover {
+	background-color: #2549de;
+	color: white;
+}
+
+.labelActive {
+	padding: 1rem;
+	text-align: center;
+	border: solid 1px black;
+	font-weight: 600;
+	font-size: 20px;
+	background-color: #2549de;
+	color: white;
+}
+
+.label input, .labelActive input {
+	display: none;
+}

@@ -11,11 +11,16 @@ const CreateRoundEntryPage = () => {
 		},
 		onError: () => navigate("/round-entries"),
 	});
-	const { rig, renderHeader, renderStep } = useMultiStep(mutation);
+	const { currentStepIndex, rig, renderHeader, renderStep } =
+		useMultiStep(mutation);
 
 	return (
-		<Layout pageTitle={`${rig} Unit Round`}>
-			{renderHeader()}
+		<Layout
+			systemHeaderIndex={currentStepIndex}
+			navigationBackUrl="/round-entries"
+			pageTitle={`${rig} Unit Round`}
+			systemHeader={renderHeader()}
+		>
 			{renderStep()}
 		</Layout>
 	);
