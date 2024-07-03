@@ -2,12 +2,16 @@ import { useNavigate } from "react-router-dom";
 import { Layout } from "../components/common/layout/layout";
 import useMultiStep from "../hooks/useMultiStep";
 import { useRoundEntryCreate } from "../services/roundEntry";
+import useRoundEntry from "../hooks/context/useRoundEntry";
 
 const CreateRoundEntryPage = () => {
 	const navigate = useNavigate();
+	const { refetch } = useRoundEntry();
+	
 	const { mutation } = useRoundEntryCreate({
 		onSuccess: () => {
 			navigate("/round-entries");
+			refetch();
 		},
 		onError: () => navigate("/round-entries"),
 	});

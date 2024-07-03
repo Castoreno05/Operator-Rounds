@@ -22,8 +22,8 @@ router.post("/insertRound", (req, res) => {
 			operator,
 			shift_date,
 			last_time_submitted,
-			last_round_performed_by,
-			JSON.stringify([rounds_completed])
+			JSON.stringify([last_round_performed_by]),
+			JSON.stringify([rounds_completed]),
 		],
 		(err, result) => {
 			if (err) {
@@ -57,6 +57,62 @@ router.get("/getRounds", (req, res) => {
 			res.status(200).json(results);
 		}
 	});
+});
+
+router.post("/updateRound", (req, res) => {
+	const {
+		round_id,
+		last_time_submitted,
+		last_round_performed_by,
+		rounds_completed,
+	} = req.body;
+
+	console.log("Received data:", {
+		round_id,
+		last_time_submitted,
+		last_round_performed_by,
+		rounds_completed,
+	});
+
+	const query = `
+      UPDATE rounddata
+      SET last_time_submitted = ?,
+          last_round_performed_by = JSON_ARRAY_APPEND(COALESCE(NULLIF(last_round_performed_by, ''), '[]'), '$', ?),
+          rounds_completed = JSON_ARRAY_APPEND(COALESCE(NULLIF(rounds_completed, ''), '[]'), '$', ?)
+      WHERE round_id = ?
+    `;
+
+	db.query(
+		query,
+		[
+			last_time_submitted,
+			last_round_performed_by,
+			JSON.stringify(rounds_completed),
+			round_id,
+		],
+		(err, result) => {
+			if (err) {
+				console.error("Database error:", err);
+				res.status(500).send("Error updating data in the database.");
+			} else {
+				if (result.affectedRows === 0) {
+					res
+						.status(404)
+						.send(
+							`${round_id}: No matching record found for the provided round_id.`
+						);
+				} else {
+					const insertedData = {
+						round_id: result.insertId,
+						last_time_submitted,
+						last_round_performed_by,
+						rounds_completed,
+					};
+					res.status(200).send(insertedData);
+				}
+			}
+		}
+	);
 });
 
 module.exports = router;

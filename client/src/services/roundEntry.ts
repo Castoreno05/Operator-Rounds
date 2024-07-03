@@ -24,3 +24,13 @@ export const useRoundEntryCreate = (handlers?: {
 		...handlers,
 	});
 };
+
+export const useRoundEntryUpdate = (handlers?: {
+	onSuccess?: () => void;
+	onError?: () => void;
+}) => {
+	return usePost<RoundEntry, unknown>({
+		relativePath: API_PATHS.PATCH_ROUNDS,
+		...handlers,
+	});
+};

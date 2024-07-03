@@ -17,7 +17,6 @@ type LayoutProps = {
 export const Layout: FC<LayoutProps> = (props) => {
 	const navigate = useNavigate();
 	const { isMobileView } = useWindowSize();
-	console.log(props.systemHeaderIndex);
 
 	const shouldRenderHeader =
 		props.pageTitle || props.navigationBackUrl || props.rightAction;

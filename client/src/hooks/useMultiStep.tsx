@@ -3,7 +3,6 @@ import useAuth from "./context/useAuth";
 import { CATALYST_SYSTEMS, TEST_BAY_SYSTEMS } from "../utils/constants";
 import SystemHeader from "../components/system-header/systemHeader";
 import SystemForms from "../components/system-forms/systemForms";
-import useRoundEntry from "./context/useRoundEntry";
 
 const SYSTEMS = {
 	Catalyst: CATALYST_SYSTEMS,
@@ -11,9 +10,12 @@ const SYSTEMS = {
 };
 type SystemKey = keyof typeof SYSTEMS;
 
-export default function useMultiStep(mutation?: any) {
+export default function useMultiStep(
+	mutation?: any,
+	roundsCompleted?: number,
+	round_id?: number
+) {
 	const { authenticatedAccount } = useAuth();
-	const { refetch } = useRoundEntry();
 	const { rig } = JSON.parse(sessionStorage.getItem("Unit_Rounds") || "{}");
 	const [currentStepIndex, setCurrentStepIndex] = useState(0);
 	const [currentSystem] = useState<SystemKey>(rig);
@@ -62,15 +64,23 @@ export default function useMultiStep(mutation?: any) {
 	};
 
 	function handleSubmit() {
-		mutation({
-			rig_name: rig,
-			operator: authenticatedAccount?.name,
-			shift_date: new Date(),
-			last_time_submitted: new Date(),
-			last_round_performed_by: authenticatedAccount?.name,
-			rounds_completed: formData,
-		});
-		refetch();
+		if (!roundsCompleted) {
+			mutation({
+				rig_name: rig,
+				operator: authenticatedAccount?.name,
+				shift_date: new Date(),
+				last_time_submitted: new Date(),
+				last_round_performed_by: authenticatedAccount?.name,
+				rounds_completed: JSON.stringify(formData),
+			});
+		} else {
+			mutation({
+				round_id: round_id,
+				last_time_submitted: new Date(),
+				last_round_performed_by: authenticatedAccount?.name,
+				rounds_completed: formData,
+			});
+		}
 	}
 	function next() {
 		setCurrentStepIndex((i) => {
