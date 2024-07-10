@@ -7,14 +7,14 @@
 	transform: translate(-50%, -50%);
 	background: white;
 	border-radius: 6px;
-	padding: 8px;
+	padding: 1.5rem;
 	z-index: 9999;
 	width: 350px;
 }
 
 .containerOptions h1 {
 	text-align: center;
-	font-size: 32px;
+	font-size: 32px !important;
 	font-weight: 700;
 }
 
@@ -30,6 +30,7 @@
 	margin-top: 0.5rem;
 	cursor: pointer;
 	font-size: 20px;
+	border-radius: 5px;
 }
 
 /*Overlay*/

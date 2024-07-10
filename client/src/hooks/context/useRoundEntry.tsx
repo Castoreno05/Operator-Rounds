@@ -45,7 +45,7 @@ export const RoundEntryProvider: FC<{
 				data.map((d: RoundEntry, index: number) => ({
 					...d,
 					// internalId: index,
-				}))
+				})).reverse()
 			);
 		},
 		disabled: !authenticatedAccount,

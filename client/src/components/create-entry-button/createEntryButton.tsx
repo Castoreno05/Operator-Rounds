@@ -1,20 +1,21 @@
 import { FC, useState } from "react";
 import Button from "../common/button/button";
-import styles from "./headerButton.module.css";
+import styles from "./createEntryButton.module.css";
 import { UnitOptionsModal } from "../modals/unitOptionsModal";
+import { IoIosCreate } from "react-icons/io";
 
-type HeaderButtonProps = {
+type CreateEntryButtonProps = {
 	onClick?: () => void;
 };
 
-export const HeaderButton: FC<HeaderButtonProps> = (
-	props: HeaderButtonProps
+export const CreateEntryButton: FC<CreateEntryButtonProps> = (
+	props: CreateEntryButtonProps
 ) => {
 	const [optionsOpened, setOptionsOpened] = useState(false);
 	return (
 		<>
-			<div className={styles.topRight}>
-				<Button
+			<div className={styles.buttonDiv}>
+				{/* <Button
 					variant={"blue-bg"}
 					text="Create New Entry"
 					startIconClassname="icon-plus"
@@ -22,6 +23,14 @@ export const HeaderButton: FC<HeaderButtonProps> = (
 						e.stopPropagation();
 						setOptionsOpened(true);
 					}}
+				/> */}
+
+				<IoIosCreate
+					onClick={(e) => {
+						e.stopPropagation();
+						setOptionsOpened(true);
+					}}
+					title="Create a new entry"
 				/>
 			</div>
 			{optionsOpened && (

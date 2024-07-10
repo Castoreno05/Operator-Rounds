@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import useAuth from "./context/useAuth";
 import { CATALYST_SYSTEMS, TEST_BAY_SYSTEMS } from "../utils/constants";
-import SystemHeader from "../components/system-header/systemHeader";
 import SystemForms from "../components/system-forms/systemForms";
 
 const SYSTEMS = {
@@ -95,18 +94,11 @@ export default function useMultiStep(
 		});
 	}
 
-	const renderHeader = () => {
-		return (
-			<SystemHeader
-				systems={system.form_header}
-				activeSystem={currentStepIndex}
-			/>
-		);
-	};
-
 	const renderStep = () => {
 		return (
 			<SystemForms
+				systems={system.form_header}
+				activeSystem={currentStepIndex}
 				isLastStep={isLastStep}
 				labels={system.form_data[currentStepIndex].labels}
 				inputs={system.form_data[currentStepIndex].inputs}
@@ -122,7 +114,6 @@ export default function useMultiStep(
 	return {
 		currentStepIndex,
 		rig,
-		renderHeader,
 		renderStep,
 	};
 }

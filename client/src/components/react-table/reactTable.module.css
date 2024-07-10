@@ -1,0 +1,74 @@
+.tableContainer {
+	border: solid lightgray 1px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+}
+
+.filterHeader {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	padding: 0.75rem;
+	margin: auto;
+	border-bottom: solid lightgray 1px;
+}
+.filterHeader h1 {
+	font-weight: 800;
+	font-size: 24px;
+	align-items: center;
+}
+.filterHeader svg {
+	cursor: pointer;
+}
+.filterOptions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	position: absolute;
+	right: 10px;
+}
+
+.table {
+	width: 100%;
+}
+
+.table thead tr th {
+	padding: 5px;
+	font-weight: 700;
+	border-bottom: solid black 1px;
+	border-right: solid lightgray 1px;
+}
+.table thead tr th:last-child {
+	border-right: none;
+}
+
+.table tbody tr td {
+	padding: 15px;
+	text-align: center;
+}
+.rounds {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+}
+.round {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+}
+.table tbody tr td:last-child {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.table tbody tr td button {
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.tableFooter {
+	display: flex;
+	border-top: solid lightgray 1px;
+}

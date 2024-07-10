@@ -1,16 +1,23 @@
 .headerContainer {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	text-align: center;
+}
+
+.headerContainer h1 {
+	border-right: solid grey 1px;
+}
+
+.headerContainer h1:last-child {
+	border: none;
 }
 
 .activeSystem {
-	padding: 1rem;
-	background-color: lightblue;
-    border-radius: 3px;
+	padding: 0.5rem;
+	background-color: rgb(1, 43, 217);
+	color: white;
 }
 .system {
 	background-color: lightgray;
-	border-radius: 3px;
 	color: grey;
-	padding: 1rem;
+	padding: 0.5rem;
 }

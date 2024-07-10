@@ -1,0 +1,46 @@
+.filterFooter {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	width: 100%;
+	align-items: center;
+	padding: 10px;
+}
+
+.footerLeft {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+.footerLeft label {
+	font-weight: 600;
+}
+.footerLeft select {
+	appearance: auto;
+	padding: 2px;
+	height: auto;
+	width: 100px;
+	border: none;
+	cursor: pointer;
+}
+
+.footerCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+}
+.footerCenter p {
+	font-weight: 600;
+}
+.footerCenter svg {
+	cursor: pointer;
+	/* color: rgb(1, 43, 217); */
+}
+
+.footerRight {
+	display: flex;
+	justify-content: end;
+}
+.footerRight p {
+	font-weight: 600;
+}

@@ -1,0 +1,13 @@
+.tipContainer {
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgb(1, 43, 217);
+	color: white;
+	padding: 5px;
+	border-radius: 3px;
+	font-size: 12px;
+	z-index: 999;
+	text-align: center;
+}

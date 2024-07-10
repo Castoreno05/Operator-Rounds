@@ -22,7 +22,7 @@ export const SystemHeader: React.FC<SystemHeaderProps> = ({
 			</h1>
 		);
 	});
-	return <div className={styles.headerContainer}>{system}</div>;
+	return <div className={styles.headerContainer} style={{gridTemplateColumns: `repeat(${systems.length}, 1fr)`}}>{system}</div>;
 };
 
 export default SystemHeader;

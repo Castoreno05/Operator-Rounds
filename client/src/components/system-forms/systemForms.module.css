@@ -1,19 +1,49 @@
-.form {
+.formContainer {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+	/* width: 1000px; */
+	margin: auto;
+	border: solid lightgray 1px;
+	/* padding: 0.5rem; */
+	margin-top: 2rem;
 }
+
+.form {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 1rem;
+	padding: 0.5rem;
+}
+
 .form_inputs {
 	display: flex;
 	flex-direction: column;
 }
 
+.form_inputs label {
+	text-align: center;
+}
+
 .responses {
 	display: flex;
+	gap: 10px;
+}
+
+.responses label {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	white-space: nowrap;
+}
+
+.responses label input {
+	margin: 0;
 }
 
 .button_container {
 	display: flex;
+	padding: 0.5rem;
 }
 
 .button_container .next_btn {

@@ -2,8 +2,9 @@
 	cursor: pointer;
 	padding: 1rem;
 	text-align: center;
-	border: solid 1px black;
-	font-weight: 600;
+	border: solid 1px lightgrey;
+	border-radius: 5px;
+	font-weight: 700;
 	font-size: 20px;
 }
 
@@ -15,11 +16,12 @@
 .labelActive {
 	padding: 1rem;
 	text-align: center;
-	border: solid 1px black;
-	font-weight: 600;
+	border: solid 1px lightgray;
+	font-weight: 700;
 	font-size: 20px;
 	background-color: #2549de;
 	color: white;
+	border-radius: 5px;
 }
 
 .label input, .labelActive input {
