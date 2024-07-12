@@ -66,6 +66,7 @@ const SystemForms: React.FC<FormStepProps> = ({
 									name={inputs[index].name[0]}
 									value={formData[inputs[index].name[0]] || ""}
 									onChange={handleChange}
+									style={{ width: "250px" }}
 								/>
 							)}
 						</div>
@@ -73,11 +74,19 @@ const SystemForms: React.FC<FormStepProps> = ({
 				))}
 			</div>
 			<div className={styles.button_container}>
-				{prevStep && <button onClick={prevStep}>Previous</button>}
+				{prevStep && (
+					<button
+						onClick={prevStep}
+						style={{ cursor: "pointer" }}
+					>
+						Previous
+					</button>
+				)}
 				<button
 					onClick={nextStep}
 					className={styles.next_btn}
 					disabled={!isNextEnabled}
+					style={isNextEnabled ? { cursor: "pointer" } : { cursor: "default" }}
 				>
 					{isLastStep ? "Submit" : "Next"}
 				</button>

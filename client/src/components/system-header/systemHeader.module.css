@@ -4,7 +4,13 @@
 }
 
 .headerContainer h1 {
+	display: flex;
 	border-right: solid grey 1px;
+	padding: 0.5rem;
+	align-items: center;
+	justify-content: center;
+	line-height: 1.4;
+	white-space: nowrap;
 }
 
 .headerContainer h1:last-child {
@@ -18,6 +24,6 @@
 }
 .system {
 	background-color: lightgray;
-	color: grey;
+	color: darkslategray;
 	padding: 0.5rem;
 }

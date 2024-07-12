@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
 import useAuth from "./context/useAuth";
-import { CATALYST_SYSTEMS, TEST_BAY_SYSTEMS } from "../utils/constants";
+import {
+	CATALYST_SYSTEMS,
+	RIG_31_SYSTEMS,
+	RIG_32_SYSTEMS,
+	TEST_BAY_SYSTEMS,
+} from "../utils/constants";
 import SystemForms from "../components/system-forms/systemForms";
 
 const SYSTEMS = {
 	Catalyst: CATALYST_SYSTEMS,
 	TestBay: TEST_BAY_SYSTEMS,
+	Rig32: RIG_32_SYSTEMS,
+	Rig31: RIG_31_SYSTEMS,
 };
 type SystemKey = keyof typeof SYSTEMS;
 

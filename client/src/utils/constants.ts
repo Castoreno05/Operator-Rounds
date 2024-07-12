@@ -14,7 +14,7 @@ export const MODAL_OPTION_STATE: RigSelection = [
 ];
 
 export const RIG_31_SYSTEMS = {
-	form_header: ["System A", "System B", "System C"],
+	form_header: ["Lab View", "Containment", "Permissives", "Feed Gas"],
 	form_data: [
 		{
 			labels: [
@@ -27,9 +27,75 @@ export const RIG_31_SYSTEMS = {
 				"Natural gas delivery pressure",
 			],
 			inputs: [
-				{ type: "radio", response: ["Good", "Bad"] },
-				{ type: "radio", response: ["Yes", "No"] },
-				{ type: "radio", response: ["Good", "Bad"] },
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["control-good", "control-bad"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["battery-life"] },
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["ups-good", "ups-bad"],
+				},
+				{
+					type: "radio",
+					response: ["Yes", "No"],
+					name: ["smell-yes", "smell-no"],
+				},
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["generator-good, generator-bad"],
+				},
+				{
+					type: "number",
+					response: ["Disabled"],
+					name: ["nat-supply-pressure"],
+				},
+				{
+					type: "number",
+					response: ["Disabled"],
+					name: ["nat-delivery-pressure"],
+				},
+			],
+		},
+		{
+			labels: [
+				"Ammonia area condition",
+				"Ammonia odor presence",
+				"Water tank supply (from Pearland city)",
+				"Ammonia tank level",
+				"Ammonia tank pressure",
+				"V-0401 feed valve blocked in when not in use (HV-1002)",
+				"Argon supply pressure",
+				"Argon delivery pressure",
+				"Hydrogen supply pressure",
+				"Hydrogen delivery pressure",
+			],
+			inputs: [
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["ammonia-condition-good", "ammonia-condition-bad"],
+				},
+				{
+					type: "radio",
+					response: ["Yes", "No"],
+					name: ["ammonia-presence-yes", "ammonia-presence-no"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["tank-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["tank-level"] },
+				{ type: "number", response: ["Disabled"], name: ["tank-pressure"] },
+				{
+					type: "radio",
+					response: ["Opened", "Closed"],
+					name: ["feed-open", "feed-closed"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["argon-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["argon-delivery"] },
+				{ type: "number", response: ["Disabled"], name: ["hydrogen-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["hydrogen-delivery"] },
 			],
 		},
 		{
@@ -43,25 +109,75 @@ export const RIG_31_SYSTEMS = {
 				"Natural gas delivery pressure",
 			],
 			inputs: [
-				{ type: "radio", response: ["Good", "Bad"] },
-				{ type: "radio", response: ["Yes", "No"] },
-				{ type: "radio", response: ["Good", "Bad"] },
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["control-good", "control-bad"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["battery-life"] },
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["ups-good", "ups-bad"],
+				},
+				{
+					type: "radio",
+					response: ["Yes", "No"],
+					name: ["smell-yes", "smell-no"],
+				},
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["generator-good, generator-bad"],
+				},
+				{
+					type: "number",
+					response: ["Disabled"],
+					name: ["nat-supply-pressure"],
+				},
+				{
+					type: "number",
+					response: ["Disabled"],
+					name: ["nat-delivery-pressure"],
+				},
 			],
 		},
 		{
 			labels: [
-				"Control room housekeeping",
-				"UPS battery life %",
-				"UPS condition",
-				"Nateral gas smell",
-				"Emergency generator overall condition (leaks, smell, visual deterioration)",
-				"Natural gas supply pressure",
-				"Natural gas delivery pressure",
+				"Ammonia area condition",
+				"Ammonia odor presence",
+				"Water tank supply (from Pearland city)",
+				"Ammonia tank level",
+				"Ammonia tank pressure",
+				"V-0401 feed valve blocked in when not in use (HV-1002)",
+				"Argon supply pressure",
+				"Argon delivery pressure",
+				"Hydrogen supply pressure",
+				"Hydrogen delivery pressure",
 			],
 			inputs: [
-				{ type: "radio", response: ["Good", "Bad"] },
-				{ type: "radio", response: ["Yes", "No"] },
-				{ type: "radio", response: ["Good", "Bad"] },
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["ammonia-condition-good", "ammonia-condition-bad"],
+				},
+				{
+					type: "radio",
+					response: ["Yes", "No"],
+					name: ["ammonia-presence-yes", "ammonia-presence-no"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["tank-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["tank-level"] },
+				{ type: "number", response: ["Disabled"], name: ["tank-pressure"] },
+				{
+					type: "radio",
+					response: ["Opened", "Closed"],
+					name: ["feed-open", "feed-closed"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["argon-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["argon-delivery"] },
+				{ type: "number", response: ["Disabled"], name: ["hydrogen-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["hydrogen-delivery"] },
 			],
 		},
 	],
@@ -69,7 +185,7 @@ export const RIG_31_SYSTEMS = {
 
 export const RIG_32_SYSTEMS = {
 	form_header: [
-		"Ammonia",
+		"Ammonia Area",
 		"Gas Panel",
 		"Cooling Water",
 		"Gas Cylinders",
@@ -87,9 +203,201 @@ export const RIG_32_SYSTEMS = {
 				"Natural gas delivery pressure",
 			],
 			inputs: [
-				{ type: "radio", response: ["Good", "Bad"] },
-				{ type: "radio", response: ["Good", "Bad"] },
-				{ type: "radio", response: ["Good", "Bad"] },
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["control-good", "control-bad"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["battery-life"] },
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["ups-good", "ups-bad"],
+				},
+				{
+					type: "radio",
+					response: ["Yes", "No"],
+					name: ["smell-yes", "smell-no"],
+				},
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["generator-good, generator-bad"],
+				},
+				{
+					type: "number",
+					response: ["Disabled"],
+					name: ["nat-supply-pressure"],
+				},
+				{
+					type: "number",
+					response: ["Disabled"],
+					name: ["nat-delivery-pressure"],
+				},
+			],
+		},
+		{
+			labels: [
+				"Ammonia area condition",
+				"Ammonia odor presence",
+				"Water tank supply (from Pearland city)",
+				"Ammonia tank level",
+				"Ammonia tank pressure",
+				"V-0401 feed valve blocked in when not in use (HV-1002)",
+				"Argon supply pressure",
+				"Argon delivery pressure",
+				"Hydrogen supply pressure",
+				"Hydrogen delivery pressure",
+			],
+			inputs: [
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["ammonia-condition-good", "ammonia-condition-bad"],
+				},
+				{
+					type: "radio",
+					response: ["Yes", "No"],
+					name: ["ammonia-presence-yes", "ammonia-presence-no"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["tank-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["tank-level"] },
+				{ type: "number", response: ["Disabled"], name: ["tank-pressure"] },
+				{
+					type: "radio",
+					response: ["Opened", "Closed"],
+					name: ["feed-open", "feed-closed"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["argon-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["argon-delivery"] },
+				{ type: "number", response: ["Disabled"], name: ["hydrogen-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["hydrogen-delivery"] },
+			],
+		},
+		{
+			labels: [
+				"Control room housekeeping",
+				"UPS battery life %",
+				"UPS condition",
+				"Nateral gas smell",
+				"Emergency generator overall condition (leaks, smell, visual deterioration)",
+				"Natural gas supply pressure",
+				"Natural gas delivery pressure",
+			],
+			inputs: [
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["control-good", "control-bad"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["battery-life"] },
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["ups-good", "ups-bad"],
+				},
+				{
+					type: "radio",
+					response: ["Yes", "No"],
+					name: ["smell-yes", "smell-no"],
+				},
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["generator-good, generator-bad"],
+				},
+				{
+					type: "number",
+					response: ["Disabled"],
+					name: ["nat-supply-pressure"],
+				},
+				{
+					type: "number",
+					response: ["Disabled"],
+					name: ["nat-delivery-pressure"],
+				},
+			],
+		},
+		{
+			labels: [
+				"Ammonia area condition",
+				"Ammonia odor presence",
+				"Water tank supply (from Pearland city)",
+				"Ammonia tank level",
+				"Ammonia tank pressure",
+				"V-0401 feed valve blocked in when not in use (HV-1002)",
+				"Argon supply pressure",
+				"Argon delivery pressure",
+				"Hydrogen supply pressure",
+				"Hydrogen delivery pressure",
+			],
+			inputs: [
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["ammonia-condition-good", "ammonia-condition-bad"],
+				},
+				{
+					type: "radio",
+					response: ["Yes", "No"],
+					name: ["ammonia-presence-yes", "ammonia-presence-no"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["tank-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["tank-level"] },
+				{ type: "number", response: ["Disabled"], name: ["tank-pressure"] },
+				{
+					type: "radio",
+					response: ["Opened", "Closed"],
+					name: ["feed-open", "feed-closed"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["argon-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["argon-delivery"] },
+				{ type: "number", response: ["Disabled"], name: ["hydrogen-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["hydrogen-delivery"] },
+			],
+		},
+		{
+			labels: [
+				"Control room housekeeping",
+				"UPS battery life %",
+				"UPS condition",
+				"Nateral gas smell",
+				"Emergency generator overall condition (leaks, smell, visual deterioration)",
+				"Natural gas supply pressure",
+				"Natural gas delivery pressure",
+			],
+			inputs: [
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["control-good", "control-bad"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["battery-life"] },
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["ups-good", "ups-bad"],
+				},
+				{
+					type: "radio",
+					response: ["Yes", "No"],
+					name: ["smell-yes", "smell-no"],
+				},
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["generator-good, generator-bad"],
+				},
+				{
+					type: "number",
+					response: ["Disabled"],
+					name: ["nat-supply-pressure"],
+				},
+				{
+					type: "number",
+					response: ["Disabled"],
+					name: ["nat-delivery-pressure"],
+				},
 			],
 		},
 	],
@@ -305,8 +613,179 @@ export const TEST_BAY_SYSTEMS = {
 };
 
 export const CATALYST_SYSTEMS = {
-	form_header: ["Catalyst System A", "Catalyst System B"],
+	form_header: [
+		"Wet Chem & Platform",
+		"Centrifuge",
+		"Calcination Furnace",
+		"Reduction Furnace",
+		"Lab",
+		"Evaporator",
+	],
 	form_data: [
+		{
+			labels: [
+				"Control room housekeeping",
+				"UPS battery life %",
+				"UPS condition",
+				"Nateral gas smell",
+				"Emergency generator overall condition (leaks, smell, visual deterioration)",
+				"Natural gas supply pressure",
+				"Natural gas delivery pressure",
+			],
+			inputs: [
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["control-good", "control-bad"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["battery-life"] },
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["ups-good", "ups-bad"],
+				},
+				{
+					type: "radio",
+					response: ["Yes", "No"],
+					name: ["smell-yes", "smell-no"],
+				},
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["generator-good, generator-bad"],
+				},
+				{
+					type: "number",
+					response: ["Disabled"],
+					name: ["nat-supply-pressure"],
+				},
+				{
+					type: "number",
+					response: ["Disabled"],
+					name: ["nat-delivery-pressure"],
+				},
+			],
+		},
+		{
+			labels: [
+				"Ammonia area condition",
+				"Ammonia odor presence",
+				"Water tank supply (from Pearland city)",
+				"Ammonia tank level",
+				"Ammonia tank pressure",
+				"V-0401 feed valve blocked in when not in use (HV-1002)",
+				"Argon supply pressure",
+				"Argon delivery pressure",
+				"Hydrogen supply pressure",
+				"Hydrogen delivery pressure",
+			],
+			inputs: [
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["ammonia-condition-good", "ammonia-condition-bad"],
+				},
+				{
+					type: "radio",
+					response: ["Yes", "No"],
+					name: ["ammonia-presence-yes", "ammonia-presence-no"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["tank-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["tank-level"] },
+				{ type: "number", response: ["Disabled"], name: ["tank-pressure"] },
+				{
+					type: "radio",
+					response: ["Opened", "Closed"],
+					name: ["feed-open", "feed-closed"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["argon-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["argon-delivery"] },
+				{ type: "number", response: ["Disabled"], name: ["hydrogen-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["hydrogen-delivery"] },
+			],
+		},
+		{
+			labels: [
+				"Control room housekeeping",
+				"UPS battery life %",
+				"UPS condition",
+				"Nateral gas smell",
+				"Emergency generator overall condition (leaks, smell, visual deterioration)",
+				"Natural gas supply pressure",
+				"Natural gas delivery pressure",
+			],
+			inputs: [
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["control-good", "control-bad"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["battery-life"] },
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["ups-good", "ups-bad"],
+				},
+				{
+					type: "radio",
+					response: ["Yes", "No"],
+					name: ["smell-yes", "smell-no"],
+				},
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["generator-good, generator-bad"],
+				},
+				{
+					type: "number",
+					response: ["Disabled"],
+					name: ["nat-supply-pressure"],
+				},
+				{
+					type: "number",
+					response: ["Disabled"],
+					name: ["nat-delivery-pressure"],
+				},
+			],
+		},
+		{
+			labels: [
+				"Ammonia area condition",
+				"Ammonia odor presence",
+				"Water tank supply (from Pearland city)",
+				"Ammonia tank level",
+				"Ammonia tank pressure",
+				"V-0401 feed valve blocked in when not in use (HV-1002)",
+				"Argon supply pressure",
+				"Argon delivery pressure",
+				"Hydrogen supply pressure",
+				"Hydrogen delivery pressure",
+			],
+			inputs: [
+				{
+					type: "radio",
+					response: ["Good", "Bad"],
+					name: ["ammonia-condition-good", "ammonia-condition-bad"],
+				},
+				{
+					type: "radio",
+					response: ["Yes", "No"],
+					name: ["ammonia-presence-yes", "ammonia-presence-no"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["tank-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["tank-level"] },
+				{ type: "number", response: ["Disabled"], name: ["tank-pressure"] },
+				{
+					type: "radio",
+					response: ["Opened", "Closed"],
+					name: ["feed-open", "feed-closed"],
+				},
+				{ type: "number", response: ["Disabled"], name: ["argon-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["argon-delivery"] },
+				{ type: "number", response: ["Disabled"], name: ["hydrogen-supply"] },
+				{ type: "number", response: ["Disabled"], name: ["hydrogen-delivery"] },
+			],
+		},
 		{
 			labels: [
 				"Control room housekeeping",
