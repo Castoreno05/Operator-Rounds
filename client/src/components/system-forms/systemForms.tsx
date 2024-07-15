@@ -19,6 +19,7 @@ interface FormStepProps {
 	isNextEnabled: boolean;
 	systems: string[];
 	activeSystem: number;
+	online: boolean;
 }
 
 const SystemForms: React.FC<FormStepProps> = ({
@@ -32,6 +33,7 @@ const SystemForms: React.FC<FormStepProps> = ({
 	isNextEnabled,
 	systems,
 	activeSystem,
+	online,
 }) => {
 	return (
 		<div className={styles.formContainer}>
@@ -57,6 +59,7 @@ const SystemForms: React.FC<FormStepProps> = ({
 											value={response}
 											checked={formData[inputs[index].name[0]] === response}
 											onChange={handleChange}
+											disabled={!online}
 										/>
 									</label>
 								))
@@ -67,6 +70,7 @@ const SystemForms: React.FC<FormStepProps> = ({
 									value={formData[inputs[index].name[0]] || ""}
 									onChange={handleChange}
 									style={{ width: "250px" }}
+									disabled={!online}
 								/>
 							)}
 						</div>

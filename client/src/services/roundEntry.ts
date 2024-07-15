@@ -22,6 +22,10 @@ export const useRoundEntryCreate = (handlers?: {
 	return usePost<RoundEntry, unknown>({
 		relativePath: API_PATHS.POST_ROUNDS,
 		...handlers,
+		toastMessage: {
+			error: "Unable to create your round entry.",
+			success: "Your round entry has been created and saved",
+		},
 	});
 };
 
@@ -32,5 +36,9 @@ export const useRoundEntryUpdate = (handlers?: {
 	return usePost<RoundEntry, unknown>({
 		relativePath: API_PATHS.PATCH_ROUNDS,
 		...handlers,
+		toastMessage: {
+			error: "Unable to update your round entry.",
+			success: "Your round entry has been updated and saved",
+		},
 	});
 };

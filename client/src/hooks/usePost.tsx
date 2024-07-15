@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ROUND_API_URL } from "../utils/constants";
-// import { Toast } from '../components/common/toast/toast'
+import { Toast } from '../components/common/toast/toast'
 // import { useMsal } from "@azure/msal-react";
 
 type UsePostProps<T> = {
@@ -36,16 +36,16 @@ export function usePost<RequestBody, RequestResponse>(
 		})
 			.then((response) => {
 				response.json().then((data: RequestResponse) => {
-					// if (props.toastMessage?.success) {
-					//     Toast({ type: 'success', message: props.toastMessage.success })
-					// }
+					if (props.toastMessage?.success) {
+					    Toast({ type: 'success', message: props.toastMessage.success })
+					}
 					props.onSuccess?.(data);
 				});
 			})
 			.catch(() => {
-				// if (props.toastMessage?.error) {
-				//     Toast({ type: 'success', message: props.toastMessage.error })
-				// }
+				if (props.toastMessage?.error) {
+				    Toast({ type: 'success', message: props.toastMessage.error })
+				}
 				props.onError?.();
 			})
 			.finally(() => {

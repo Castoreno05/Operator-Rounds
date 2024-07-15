@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, Dispatch, SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 import { RoundEntry } from "../../models/roundEntry";
 import { SearchBar } from "../common/search-bar/searchBar";
@@ -16,16 +16,21 @@ import {
 	Row,
 	FilterFn,
 } from "@tanstack/react-table";
+import Indicator from "../common/indicator/indicator";
 import { formatDateString } from "../../utils/stringFormatter";
 import { FaSearch, FaPlus } from "react-icons/fa";
 import styles from "./reactTable.module.css";
-import { Tooltip } from "../common/tool-tip/toolTip";
+// import { Tooltip } from "../common/tool-tip/toolTip";
 
 type ReactTableProps = {
 	entries: RoundEntry[];
+	show: boolean;
 };
 
 export const ReactTable: FC<ReactTableProps> = (props) => {
+	const { updateRound } = JSON.parse(
+		sessionStorage.getItem("Update_Round") || "{}"
+	);
 	const [isOpen, setIsOpen] = useState(false);
 	const [sorting, setSorting] = useState<SortingState>([]);
 	const [options, setOptions] = useState([5, 10, 15]);
@@ -37,6 +42,16 @@ export const ReactTable: FC<ReactTableProps> = (props) => {
 		{
 			accessorKey: "rig_name",
 			header: "Rig Name",
+			cell: ({ row }) => {
+				return (
+					<div className={styles.rigName}>
+						{row.original.round_id === updateRound && (
+							<Indicator show={props.show} />
+						)}
+						{row.original.rig_name}
+					</div>
+				);
+			},
 		},
 		{
 			accessorKey: "operator",

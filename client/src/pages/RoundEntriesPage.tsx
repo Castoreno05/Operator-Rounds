@@ -4,11 +4,14 @@ import ReactTable from "../components/react-table/reactTable";
 import useRoundEntry from "../hooks/context/useRoundEntry";
 
 export const RoundEntriesPage = () => {
-	const { roundEntries } = useRoundEntry();
+	const { roundEntries, showIndicator } = useRoundEntry();
 
 	return (
 		<Layout isLoading={!roundEntries}>
-			<ReactTable entries={roundEntries} />
+			<ReactTable
+				entries={roundEntries}
+				show={showIndicator}
+			/>
 		</Layout>
 	);
 };

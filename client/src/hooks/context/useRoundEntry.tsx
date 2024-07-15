@@ -5,6 +5,8 @@ import {
 	useContext,
 	useEffect,
 	useState,
+	Dispatch,
+	SetStateAction,
 } from "react";
 import { RoundEntry } from "../../models/roundEntry";
 import { differenceBy } from "lodash";
@@ -15,6 +17,8 @@ export interface RoundEntryContextValue {
 	roundEntries: RoundEntry[];
 	roundEntriesById: Record<number, RoundEntry>;
 	isLoading: boolean;
+	showIndicator: boolean;
+	setShowIndicator: Dispatch<SetStateAction<boolean>>;
 	addRoundEntries: (roundEntries: RoundEntry[]) => void;
 	removeRoundEntries: (ids: number[]) => void;
 	refetch: () => void;
@@ -24,6 +28,8 @@ export const RoundEntryContext = createContext<RoundEntryContextValue>({
 	roundEntries: [],
 	roundEntriesById: {},
 	isLoading: false,
+	showIndicator: false,
+	setShowIndicator: () => {},
 	addRoundEntries: (_) => {},
 	removeRoundEntries: (_) => {},
 	refetch: () => {},
@@ -35,6 +41,7 @@ export const RoundEntryProvider: FC<{
 	const { authenticatedAccount } = useAuth();
 	const [roundEntries, setRoundEntries] = useState<RoundEntry[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [showIndicator, setShowIndicator] = useState(false);
 	const [roundEntriesById, setRoundEntriesById] = useState<
 		Record<string, RoundEntry>
 	>({});
@@ -42,10 +49,12 @@ export const RoundEntryProvider: FC<{
 	const { isLoading: isFetching, refetch } = useRoundEntryGetAll({
 		onSuccess: (data) => {
 			setRoundEntries(
-				data.map((d: RoundEntry, index: number) => ({
-					...d,
-					// internalId: index,
-				})).reverse()
+				data
+					.map((d: RoundEntry, index: number) => ({
+						...d,
+						// internalId: index,
+					}))
+					.reverse()
 			);
 		},
 		disabled: !authenticatedAccount,
@@ -87,6 +96,8 @@ export const RoundEntryProvider: FC<{
 				roundEntries,
 				roundEntriesById,
 				isLoading: isFetching || isLoading,
+				showIndicator,
+				setShowIndicator,
 				addRoundEntries,
 				removeRoundEntries,
 				refetch,

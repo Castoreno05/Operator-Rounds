@@ -3,24 +3,32 @@ import { Layout } from "../components/common/layout/layout";
 import useMultiStep from "../hooks/useMultiStep";
 import { useRoundEntryCreate } from "../services/roundEntry";
 import useRoundEntry from "../hooks/context/useRoundEntry";
+import Toggle from "../components/common/toggle/toggle";
 
 const CreateRoundEntryPage = () => {
 	const navigate = useNavigate();
-	const { refetch } = useRoundEntry();
+	const { refetch, setShowIndicator } = useRoundEntry();
 
 	const { mutation } = useRoundEntryCreate({
 		onSuccess: () => {
 			navigate("/round-entries");
 			refetch();
+			setShowIndicator(true);
 		},
 		onError: () => navigate("/round-entries"),
 	});
-	const { rig, renderStep } = useMultiStep(mutation);
+	const { rig, renderStep, handleOnline, online } = useMultiStep(mutation);
 
 	return (
 		<Layout
 			navigationBackUrl="/round-entries"
 			pageTitle={`${rig} Unit Round`}
+			rightAction={
+				<Toggle
+					handleOnline={handleOnline}
+					online={online}
+				/>
+			}
 		>
 			{renderStep()}
 		</Layout>
@@ -42,4 +50,5 @@ export default CreateRoundEntryPage;
  * Section to add comments to the system.
  * Review page once systems are complete.
  * Ability to resume rounds from where the operator left off in the instance of navigating to another page.
+ * Indication to the user when a piece of equipment is abnormal
 /************/

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import useAuth from "./context/useAuth";
 import {
 	CATALYST_SYSTEMS,
@@ -15,6 +15,11 @@ const SYSTEMS = {
 	Rig31: RIG_31_SYSTEMS,
 };
 type SystemKey = keyof typeof SYSTEMS;
+type FormData = {
+	[key: string]: {
+		[field: string]: string;
+	};
+};
 
 export default function useMultiStep(
 	mutation?: any,
@@ -25,17 +30,22 @@ export default function useMultiStep(
 	const { rig } = JSON.parse(sessionStorage.getItem("Unit_Rounds") || "{}");
 	const [currentStepIndex, setCurrentStepIndex] = useState(0);
 	const [currentSystem] = useState<SystemKey>(rig);
-	const [formData, setFormData] = useState<any>({});
+	const [formData, setFormData] = useState<Partial<FormData>>(() => {
+		const savedFormData = sessionStorage.getItem("formData");
+		return savedFormData ? JSON.parse(savedFormData) : {};
+	});
 	const [isNextEnabled, setIsNextEnabled] = useState(false);
+	const [online, setOnline] = useState(true);
 
 	const system = SYSTEMS[currentSystem];
 	const isLastStep =
-		currentStepIndex === SYSTEMS[currentSystem].form_header.length - 1;
-	const stepKey = system.form_header[currentStepIndex];
+		currentStepIndex === SYSTEMS[currentSystem]?.form_header?.length - 1;
+	const stepKey = system?.form_header[currentStepIndex];
 
 	useEffect(() => {
 		validateForm();
 		// eslint-disable-next-line
+		sessionStorage.setItem("formData", JSON.stringify(formData));
 	}, [formData, currentStepIndex]);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,13 +62,47 @@ export default function useMultiStep(
 			};
 		});
 	};
+	const handleOnline = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const newOnlineState = e.target.checked;
+		setOnline(newOnlineState);
+		if (!newOnlineState) {
+			setFormData((prevFormData) => {
+				const updatedFormData: Partial<FormData> = {
+					...prevFormData,
+					[stepKey]: {
+						...prevFormData[stepKey],
+					},
+				};
+				const currentInputs =
+					SYSTEMS[currentSystem].form_data[currentStepIndex].inputs;
+				currentInputs.forEach((input) => {
+					if (input.type === "radio") {
+						updatedFormData[stepKey]![input.name[0]] = "offline";
+					} else {
+						input.name.forEach((name) => {
+							updatedFormData[stepKey]![name] = "offline";
+						});
+					}
+				});
+				return updatedFormData;
+			});
+		} else if (newOnlineState) {
+			setFormData((prevFormData) => {
+				const updatedFormData: Partial<FormData> = { ...prevFormData };
+				if (updatedFormData[stepKey]) {
+					delete updatedFormData[stepKey];
+				}
+				return updatedFormData;
+			});
+		}
+	};
 	const validateForm = () => {
-		const stepKey = SYSTEMS[currentSystem].form_header[currentStepIndex];
+		const stepKey = SYSTEMS[currentSystem]?.form_header[currentStepIndex];
 		const currentFormData = formData[stepKey] || {};
 		const currentInputs =
-			SYSTEMS[currentSystem].form_data[currentStepIndex].inputs;
+			SYSTEMS[currentSystem]?.form_data[currentStepIndex].inputs;
 
-		const allFilled = currentInputs.every((input) => {
+		const allFilled = currentInputs?.every((input) => {
 			if (input.type === "radio") {
 				return currentFormData[input.name[0]] !== undefined;
 			} else {
@@ -87,14 +131,41 @@ export default function useMultiStep(
 				rounds_completed: formData,
 			});
 		}
+		sessionStorage.removeItem("formData");
 	}
 	function next() {
+		const nextStepKey = system.form_header[currentStepIndex + 1];
+		const nextFormData = formData[nextStepKey];
+		const firstPropertyKey = !nextFormData ? "" : Object.keys(nextFormData)[0];
+		const firstPropertyValue = nextFormData
+			? nextFormData[firstPropertyKey]
+			: "";
+
+		if (!nextFormData) {
+			setOnline(true);
+		} else if (firstPropertyValue === "offline") {
+			setOnline(false);
+		} else if (firstPropertyValue !== "offline") {
+			setOnline(true);
+		}
+
 		setCurrentStepIndex((i) => {
 			if (i >= SYSTEMS[currentSystem].form_header.length - 1) return i;
 			return i + 1;
 		});
 	}
 	function back() {
+		const nextStepKey = system.form_header[currentStepIndex - 1];
+		const prevFormData = formData[nextStepKey] || {};
+		const firstPropertyKey = Object.keys(prevFormData)[0];
+		const firstPropertyValue = prevFormData[firstPropertyKey];
+
+		if (firstPropertyValue === "offline") {
+			setOnline(false);
+		} else {
+			setOnline(true);
+		}
+
 		setCurrentStepIndex((i) => {
 			if (i <= 0) return i;
 			return i - 1;
@@ -114,6 +185,7 @@ export default function useMultiStep(
 				nextStep={isLastStep ? handleSubmit : next}
 				prevStep={currentStepIndex > 0 ? back : undefined}
 				isNextEnabled={isNextEnabled}
+				online={online}
 			/>
 		);
 	};
@@ -122,5 +194,7 @@ export default function useMultiStep(
 		currentStepIndex,
 		rig,
 		renderStep,
+		handleOnline,
+		online,
 	};
 }

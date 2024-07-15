@@ -46,6 +46,9 @@
 	padding: 15px;
 	text-align: center;
 }
+.rigName {
+	position: relative;
+}
 .rounds {
 	display: flex;
 	align-items: center;

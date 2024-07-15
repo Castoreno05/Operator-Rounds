@@ -18,6 +18,12 @@ export const Layout: FC<LayoutProps> = (props) => {
 
 	const shouldRenderHeader =
 		props.pageTitle || props.navigationBackUrl || props.rightAction;
+
+	const handleNavigation = () => {
+		navigate(props.navigationBackUrl!);
+		sessionStorage.removeItem("formData");
+	};
+
 	return (
 		<div className={styles.container}>
 			{props.isLoading ? (
@@ -32,7 +38,7 @@ export const Layout: FC<LayoutProps> = (props) => {
 								{props.navigationBackUrl && (
 									<i
 										className="icon-arrow-left"
-										onClick={() => navigate(props.navigationBackUrl!)}
+										onClick={handleNavigation}
 									/>
 								)}
 								{props.pageTitle && <h1>{props.pageTitle}</h1>}
