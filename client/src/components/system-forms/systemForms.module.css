@@ -13,7 +13,7 @@
 
 .form {
 	display: grid;
-	grid-template-columns: repeat(1, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 	grid-gap: 1rem;
 	padding: 2rem 2rem 0.5rem;
 	overflow-y: scroll;
@@ -32,7 +32,7 @@
 
 .responses {
 	display: flex;
-	gap: 10px;
+	gap: 3rem;
 }
 
 .responses label {
@@ -52,7 +52,7 @@
 
 .button_container {
 	display: flex;
-	padding: 1.5rem 2rem 2rem;
+	padding: 1rem 2rem;
 	margin-top: auto;
 }
 

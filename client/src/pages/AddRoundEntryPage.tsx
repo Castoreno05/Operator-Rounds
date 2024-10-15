@@ -57,9 +57,8 @@ export default AddRoundEntryPage;
  * 
  * ******** Future Features ********
  * 
- * Toggle button that gives a system status of "online" or "offline".
+ * Toggle button that gives a system status of "online" or "offline". ✅
+ * Ability to resume rounds from where the operator left off in the instance of navigating to another page. ✅
  * Section to add comments to the system.
- * Review page once systems are complete.
- * Ability to resume rounds from where the operator left off in the instance of navigating to another page.
  * Indication to the user when equipment is abnormal
 /************/

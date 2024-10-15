@@ -25,10 +25,10 @@ export default RoundEntriesPage;
  * 
  * ******** Future Features ********
  * 
- * View Details button that will redirect you to an overview of the created entry.
+ * View Details button that will redirect you to an overview of the created entry. ✅
+ * Visual representation of table additions.✅
  * Column re-sizer.
  * Options to hide or show table columns
- * Visual representation of table additions.
  * Selector on table rows.
  * Print option for selected rows.
 /************/

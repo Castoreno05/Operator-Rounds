@@ -1,4 +1,4 @@
-import { FC, useState, Dispatch, SetStateAction } from "react";
+import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RoundEntry } from "../../models/roundEntry";
 import { SearchBar } from "../common/search-bar/searchBar";
@@ -13,12 +13,12 @@ import {
 	flexRender,
 	getSortedRowModel,
 	SortingState,
-	Row,
+	// Row,
 	FilterFn,
 } from "@tanstack/react-table";
 import Indicator from "../common/indicator/indicator";
 import { formatDateString } from "../../utils/stringFormatter";
-import { FaSearch, FaPlus } from "react-icons/fa";
+import { FaSearch, FaPlus, FaClipboardList } from "react-icons/fa";
 import styles from "./reactTable.module.css";
 // import { Tooltip } from "../common/tool-tip/toolTip";
 
@@ -33,7 +33,7 @@ export const ReactTable: FC<ReactTableProps> = (props) => {
 	);
 	const [isOpen, setIsOpen] = useState(false);
 	const [sorting, setSorting] = useState<SortingState>([]);
-	const [options, setOptions] = useState([5, 10, 15]);
+	const [options] = useState([5, 10, 15]);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [searchInput, setSearchInput] = useState("");
 	const navigate = useNavigate();
@@ -109,20 +109,28 @@ export const ReactTable: FC<ReactTableProps> = (props) => {
 					: "Add a new round";
 
 				return (
-					<button
-						onClick={() =>
-							handleEditRound(
-								row.original.round_id,
-								row.original.rig_name,
-								row.original.rounds_completed.length
-							)
-						}
-						disabled={isDisabled}
-						style={{ cursor: isDisabled ? "not-allowed" : "pointer" }}
-						title={description}
-					>
-						<FaPlus color={isDisabled ? "grey" : "#012bd9"} />
-					</button>
+					<>
+						<button
+							onClick={() =>
+								handleEditRound(
+									row.original.round_id,
+									row.original.rig_name,
+									row.original.rounds_completed.length
+								)
+							}
+							disabled={isDisabled}
+							style={{ cursor: isDisabled ? "not-allowed" : "pointer" }}
+							title={description}
+						>
+							<FaPlus color={isDisabled ? "grey" : "#012bd9"} />
+						</button>
+						<button onClick={() => handleViewRounds(row.original.round_id)}>
+							<FaClipboardList
+								title="View Details"
+								color={"F5A623"}
+							/>
+						</button>
+					</>
 				);
 			},
 		},
@@ -188,6 +196,10 @@ export const ReactTable: FC<ReactTableProps> = (props) => {
 			})
 		);
 		return navigate(`/add-round-entry/${id}`);
+	};
+
+	const handleViewRounds = (id: number) => {
+		return navigate(`/view-round-entry/${id}`);
 	};
 
 	const handleRowsPerPageChange = (rowsPerPage: number) => {

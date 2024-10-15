@@ -7,13 +7,17 @@ import Toggle from "../components/common/toggle/toggle";
 
 const CreateRoundEntryPage = () => {
 	const navigate = useNavigate();
-	const { refetch, setShowIndicator } = useRoundEntry();
+	const { refetch, setShowIndicator, roundEntries } = useRoundEntry();
 
 	const { mutation } = useRoundEntryCreate({
 		onSuccess: () => {
 			navigate("/round-entries");
 			refetch();
 			setShowIndicator(true);
+			sessionStorage.setItem(
+				"Update_Round",
+				JSON.stringify({ updateRound: roundEntries.length + 1 })
+			);
 		},
 		onError: () => navigate("/round-entries"),
 	});
@@ -46,9 +50,8 @@ export default CreateRoundEntryPage;
  * 
  * ******** Future Features ********
  * 
- * Toggle button that gives a system status of "online" or "offline".
+ * Toggle button that gives a system status of "online" or "offline". ✅
+ * Ability to resume rounds from where the operator left off in the instance of navigating to another page. ✅
  * Section to add comments to the system.
- * Review page once systems are complete.
- * Ability to resume rounds from where the operator left off in the instance of navigating to another page.
  * Indication to the user when a piece of equipment is abnormal
 /************/

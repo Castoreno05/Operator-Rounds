@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import RoundEntriesPage from "./pages/RoundEntriesPage";
 import CreateRoundEntryPage from "./pages/CreateRoundEntryPage";
 import AddRoundEntryPage from "./pages/AddRoundEntryPage";
+import ViewRoundEntryPage from "./pages/ViewRoundEntryPage";
 
 export const PageRouter = () => {
 	return (
@@ -33,6 +34,14 @@ export const PageRouter = () => {
 				element={
 					<AuthGuard>
 						<AddRoundEntryPage />
+					</AuthGuard>
+				}
+			/>
+			<Route
+				path="/view-round-entry/:id"
+				element={
+					<AuthGuard>
+						<ViewRoundEntryPage />
 					</AuthGuard>
 				}
 			/>

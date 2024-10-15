@@ -13,9 +13,8 @@
 	border-bottom: solid lightgray 1px;
 }
 .filterHeader h1 {
-	font-weight: 800;
-	font-size: 24px;
-	align-items: center;
+	font-weight: 700;
+	font-size: 22px;
 }
 .filterHeader svg {
 	cursor: pointer;
@@ -23,9 +22,9 @@
 .filterOptions {
 	display: flex;
 	align-items: center;
-	gap: 10px;
+	gap: 20px;
 	position: absolute;
-	right: 10px;
+	right: 14px;
 }
 
 .table {
@@ -43,7 +42,7 @@
 }
 
 .table tbody tr td {
-	padding: 15px;
+	padding: 12px;
 	text-align: center;
 }
 .rigName {
@@ -63,12 +62,15 @@
 .table tbody tr td:last-child {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 }
 .table tbody tr td button {
 	background: none;
 	border: none;
 	cursor: pointer;
+}
+.table tbody tr td button svg {
+	font-size: 18px;
 }
 
 .tableFooter {

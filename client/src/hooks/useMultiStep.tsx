@@ -35,7 +35,10 @@ export default function useMultiStep(
 		return savedFormData ? JSON.parse(savedFormData) : {};
 	});
 	const [isNextEnabled, setIsNextEnabled] = useState(false);
-	const [online, setOnline] = useState(true);
+	const firstPropertyObject = formData[Object.keys(formData)[0]];
+	const firstNestedValue =
+		firstPropertyObject?.[Object.keys(firstPropertyObject)[0]] === "offline" ? false : true;
+	const [online, setOnline] = useState(firstNestedValue);
 
 	const system = SYSTEMS[currentSystem];
 	const isLastStep =
